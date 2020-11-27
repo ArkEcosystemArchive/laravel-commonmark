@@ -8,7 +8,7 @@ final class YouTubeRenderer
 {
     public static function render(MediaUrl $url): HtmlElement
     {
-        return new HtmlElement('iframe', [
+        $video = new HtmlElement('iframe', [
             'width'           => '100%',
             'height'          => 480,
             'src'             => 'https://www.youtube.com/embed/'.$url->getId(),
@@ -21,5 +21,10 @@ final class YouTubeRenderer
             'modestbranding'  => 1,
             'autohide'        => 1,
         ]);
+
+        $container = new HtmlElement('div', ['class' => 'video-container']);
+        $container->setContents($video);
+
+        return $container;
     }
 }
