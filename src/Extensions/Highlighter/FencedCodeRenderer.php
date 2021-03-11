@@ -63,6 +63,6 @@ class FencedCodeRenderer implements BlockRendererInterface
             return null;
         }
 
-        return Xml::escape($infoWords[0], true);
+        return Xml::escape($infoWords[0]);
     }
 }
