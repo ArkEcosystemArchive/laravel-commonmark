@@ -3,6 +3,7 @@
 namespace Tests;
 
 use ARKEcosystem\CommonMark\CommonMarkServiceProvider;
+use GrahamCampbell\Markdown\MarkdownServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 /**
@@ -10,16 +11,10 @@ use Orchestra\Testbench\TestCase as Orchestra;
  */
 class TestCase extends Orchestra
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
-    }
-
     protected function getPackageProviders($app)
     {
         return [
+            MarkdownServiceProvider::class,
             CommonMarkServiceProvider::class,
         ];
     }

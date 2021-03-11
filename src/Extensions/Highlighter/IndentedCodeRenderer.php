@@ -15,9 +15,9 @@ class IndentedCodeRenderer implements BlockRendererInterface
     /** @var \League\CommonMark\Block\Renderer\IndentedCodeRenderer */
     protected $baseRenderer;
 
-    public function __construct(array $autodetectLanguages = [])
+    public function __construct()
     {
-        $this->highlighter  = new CodeBlockHighlighter($autodetectLanguages);
+        $this->highlighter  = new CodeBlockHighlighter();
         $this->baseRenderer = new BaseIndentedCodeRenderer();
     }
 

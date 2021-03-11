@@ -4,6 +4,7 @@ namespace ARKEcosystem\CommonMark;
 
 use ARKEcosystem\CommonMark\Extensions\Highlighter\FencedCodeRenderer;
 use ARKEcosystem\CommonMark\Extensions\Image\ImageRenderer;
+use ARKEcosystem\CommonMark\Extensions\Link\LinkRenderer;
 use ARKEcosystem\CommonMark\View\BladeEngine;
 use ARKEcosystem\CommonMark\View\BladeMarkdownEngine;
 use ARKEcosystem\CommonMark\View\FileViewFinder;
@@ -128,10 +129,23 @@ class CommonMarkServiceProvider extends ServiceProvider
         $environment->addInlineRenderer(InlineElement\Emphasis::class, new InlineRenderer\EmphasisRenderer(), 0);
         $environment->addInlineRenderer(InlineElement\HtmlInline::class, new InlineRenderer\HtmlInlineRenderer(), 0);
         $environment->addInlineRenderer(InlineElement\Image::class, new ImageRenderer(), 0);
-        $environment->addInlineRenderer(InlineElement\Link::class, new InlineRenderer\LinkRenderer(), 0);
         $environment->addInlineRenderer(InlineElement\Newline::class, new InlineRenderer\NewlineRenderer(), 0);
         $environment->addInlineRenderer(InlineElement\Strong::class, new InlineRenderer\StrongRenderer(), 0);
         $environment->addInlineRenderer(InlineElement\Text::class, new InlineRenderer\TextRenderer(), 0);
+
+        $inlineRenderers = array_merge([
+            InlineElement\Emphasis::class   => InlineRenderer\EmphasisRenderer::class,
+            InlineElement\HtmlInline::class => InlineRenderer\HtmlInlineRenderer::class,
+            InlineElement\Image::class      => ImageRenderer::class,
+            InlineElement\Link::class       => LinkRenderer::class,
+            InlineElement\Newline::class    => InlineRenderer\NewlineRenderer::class,
+            InlineElement\Strong::class     => InlineRenderer\StrongRenderer::class,
+            InlineElement\Text::class       => InlineRenderer\TextRenderer::class,
+        ], $this->app['config']['markdown']['inlineRenderers']);
+
+        foreach ($inlineRenderers as $interface => $implementation) {
+            $environment->addInlineRenderer($interface, resolve($implementation), 0);
+        }
 
         $environment->mergeConfig([
             'external_link' => [
