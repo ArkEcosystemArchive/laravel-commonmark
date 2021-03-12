@@ -49,8 +49,17 @@ final class LinkRenderer implements InlineRendererInterface, ConfigurationAwareI
             return new HtmlElement('a', $attrs, $htmlRenderer->renderInlines($inline->children()));
         }
 
+        $text = $attrs['title'] ?? $attrs['href'];
+
+        // If the child is not as URL we can use it as the text for the link
+        $children = trim($htmlRenderer->renderInlines($inline->children()));
+
+        if (! filter_var($children, FILTER_VALIDATE_URL)) {
+            $text = $children;
+        }
+
         return view('components.external-link', [
-            'text' => $attrs['title'] ?? $attrs['href'],
+            'text' => $text,
             'url'  => $attrs['href'],
         ])->render();
     }
