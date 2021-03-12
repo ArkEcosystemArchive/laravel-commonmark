@@ -62,6 +62,20 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | CommonMark Inline Renderers
+    |--------------------------------------------------------------------------
+    |
+    | This option specifies what inline renderer will be automatically enabled.
+    | Simply provide your inline renderer class names here.
+    |
+    | Default: []
+    |
+    */
+
+    'inlineRenderers' => [],
+
+    /*
+    |--------------------------------------------------------------------------
     | Renderer Configuration
     |--------------------------------------------------------------------------
     |
