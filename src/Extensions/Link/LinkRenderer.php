@@ -2,6 +2,7 @@
 
 namespace ARKEcosystem\CommonMark\Extensions\Link;
 
+use Illuminate\View\ComponentAttributeBag;
 use League\CommonMark\ElementRendererInterface;
 use League\CommonMark\HtmlElement;
 use League\CommonMark\Inline\Element\AbstractInline;
@@ -58,7 +59,8 @@ final class LinkRenderer implements InlineRendererInterface, ConfigurationAwareI
             $text = $children;
         }
 
-        return view('components.external-link', [
+        return view('ark::external-link-confirm', [
+            'attributes' => new ComponentAttributeBag([]),
             'text' => $text,
             'url'  => $attrs['href'],
         ])->render();

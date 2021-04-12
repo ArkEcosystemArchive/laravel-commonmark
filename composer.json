@@ -14,7 +14,8 @@
         "league/commonmark": "^1.5",
         "calebporzio/sushi": "^2.1",
         "spatie/yaml-front-matter": "^2.0",
-        "unicorn-fail/emoji": "1.0.x-dev"
+        "unicorn-fail/emoji": "1.0.x-dev",
+        "arkecosystem/ui": "^2.36"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.18",
