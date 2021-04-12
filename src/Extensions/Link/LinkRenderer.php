@@ -63,8 +63,8 @@ final class LinkRenderer implements InlineRendererInterface, ConfigurationAwareI
             config('markdown.link_renderer_view_attributes', ['inline' => true]),
             [
                 'attributes' => new ComponentAttributeBag([]),
-                'text' => $text,
-                'url'  => $attrs['href'],
+                'text'       => $text,
+                'url'        => $attrs['href'],
             ]
         ))->render();
     }
