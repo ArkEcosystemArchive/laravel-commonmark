@@ -37,7 +37,7 @@ class FencedCodeRenderer implements BlockRendererInterface
             )
         );
 
-        $container = new HtmlElement('div', ['class' => 'p-4 mb-6 rounded-lg bg-theme-secondary-800 overflow-x-auto']);
+        $container = new HtmlElement('div', ['class' => 'p-4 mb-6 rounded-xl bg-theme-secondary-800 overflow-x-auto']);
         $container->setContents($element);
 
         return $container;
