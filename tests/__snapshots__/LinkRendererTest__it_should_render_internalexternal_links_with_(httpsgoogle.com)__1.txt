@@ -4,5 +4,5 @@
     target="_blank"
     rel="noopener nofollow noreferrer"
 >
-    <span></span>
+    <span>Label</span>
 </a>

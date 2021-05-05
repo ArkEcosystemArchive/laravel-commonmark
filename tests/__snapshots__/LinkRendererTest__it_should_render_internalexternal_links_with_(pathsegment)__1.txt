@@ -1,1 +1,1 @@
-<a href="/path/segment"></a>
+<a href="/path/segment" title="Title">Label</a>
