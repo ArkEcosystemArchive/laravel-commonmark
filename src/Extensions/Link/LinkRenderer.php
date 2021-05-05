@@ -46,7 +46,7 @@ final class LinkRenderer implements InlineRendererInterface, ConfigurationAwareI
             $attrs['rel'] = 'noopener nofollow noreferrer';
         }
 
-        if (str_starts_with($attrs['href'], config('app.url'))) {
+        if ($this->isInternalLink($attrs['href'])) {
             return new HtmlElement('a', $attrs, $htmlRenderer->renderInlines($inline->children()));
         }
 
@@ -72,5 +72,24 @@ final class LinkRenderer implements InlineRendererInterface, ConfigurationAwareI
     public function setConfiguration(ConfigurationInterface $configuration)
     {
         $this->config = $configuration;
+    }
+
+    private function isInternalLink(string $url): bool
+    {
+        if(str_starts_with($url, config('app.url'))) {
+            return true;
+        }
+
+        // Anchors
+        if(str_starts_with($url, '#')) {
+            return true;
+        }
+
+        // Relative links, but not protocol relative
+        if(str_starts_with($url, '/') && !str_starts_with($url, '//')) {
+            return true;
+        }
+
+        return false;
     }
 }
