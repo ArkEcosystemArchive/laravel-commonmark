@@ -1,0 +1,8 @@
+<a
+    href="ftp://google.com"
+    class="link font-semibold inline space-x-1 whitespace-nowrap"
+    target="_blank"
+    rel="noopener nofollow noreferrer"
+>
+    <span></span>
+</a>

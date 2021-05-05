@@ -10,7 +10,21 @@ use League\CommonMark\Inline\Renderer\TextRenderer;
 use League\CommonMark\Util\Configuration;
 use function Spatie\Snapshots\assertMatchesSnapshot;
 
-it('should render internal/external links', function (string $url) {
+it('should render internal links', function (string $url) {
+    $subject = new LinkRenderer();
+    $subject->setConfiguration(new Configuration());
+
+    $environment = new Environment();
+    $environment->addInlineRenderer(Text::class, new TextRenderer());
+
+    assertMatchesSnapshot((string) $subject->render(new Link($url, 'Label', 'Title'), new HtmlRenderer($environment)));
+})->with([
+    'https://ourapp.com',
+    '#heading',
+    '/path/segment',
+]);
+
+it('should render external links', function (string $url) {
     $subject = new LinkRenderer();
     $subject->setConfiguration(new Configuration());
 
@@ -20,7 +34,7 @@ it('should render internal/external links', function (string $url) {
     assertMatchesSnapshot((string) $subject->render(new Link($url, 'Label', 'Title'), new HtmlRenderer($environment)));
 })->with([
     'https://google.com',
-    'https://ourapp.com',
-    '#heading',
-    '/path/segment',
+    'unsupported/relative/url', // is valid, but currently not supported
+    'ftp://google.com',
+    '//google.com',
 ]);
