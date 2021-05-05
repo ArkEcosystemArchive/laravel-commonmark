@@ -29,6 +29,7 @@ class AnalysisTest extends TestCase
             'League\CommonMark\Inline\Element',
             'League\CommonMark\Inline\Parser',
             'League\CommonMark\Inline\Renderer',
+            'Spatie\Snapshots\assertMatchesSnapshot',
         ];
     }
 }
