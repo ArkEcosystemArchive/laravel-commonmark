@@ -76,17 +76,17 @@ final class LinkRenderer implements InlineRendererInterface, ConfigurationAwareI
 
     private function isInternalLink(string $url): bool
     {
-        if(str_starts_with($url, config('app.url'))) {
+        if (str_starts_with($url, config('app.url'))) {
             return true;
         }
 
         // Anchors
-        if(str_starts_with($url, '#')) {
+        if (str_starts_with($url, '#')) {
             return true;
         }
 
         // Relative links, but not protocol relative
-        if(str_starts_with($url, '/') && !str_starts_with($url, '//')) {
+        if (str_starts_with($url, '/') && ! str_starts_with($url, '//')) {
             return true;
         }
 
