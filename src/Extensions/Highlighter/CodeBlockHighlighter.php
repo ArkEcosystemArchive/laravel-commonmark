@@ -8,11 +8,15 @@ class CodeBlockHighlighter
 {
     public function highlight(string $codeBlock, ?string $language = null)
     {
-        $codeBlockWithoutTags = strip_tags($codeBlock);
-        $contents             = trim(htmlspecialchars_decode($codeBlockWithoutTags));
+        if ($language === "xml") {
+            return $codeBlock;
+        }
 
         try {
-            return vsprintf('<code class="hljs-copy language-%s">%s</code>', [$language, $contents]);
+            return vsprintf('<code class="hljs-copy language-%s">%s</code>', [
+                $language,
+                trim(htmlspecialchars_decode(strip_tags($codeBlock))),
+            ]);
         } catch (DomainException $e) {
             return $codeBlock;
         }
