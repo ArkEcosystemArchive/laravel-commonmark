@@ -21,19 +21,27 @@ use League\CommonMark\Normalizer\SlugNormalizer;
 class CommonMarkServiceProvider extends ServiceProvider
 {
     /**
+     * Register services.
+     *
+     * @return void
+     */
+    public function register(): void
+    {
+        $this->registerViewFinder();
+
+        $this->registerBladeEngines();
+    }
+
+    /**
      * Boot services.
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->registerPublishers();
 
-        $this->registerBladeEngines();
-
         $this->registerCommonMarkEnvironment();
-
-        $this->registerViewFinder();
     }
 
     /**
