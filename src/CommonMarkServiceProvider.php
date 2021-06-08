@@ -28,8 +28,6 @@ class CommonMarkServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->registerViewFinder();
-
-        $this->registerBladeEngines();
     }
 
     /**
@@ -40,6 +38,8 @@ class CommonMarkServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->registerPublishers();
+
+        $this->registerBladeEngines();
 
         $this->registerCommonMarkEnvironment();
     }
