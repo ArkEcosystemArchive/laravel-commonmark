@@ -34,6 +34,13 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
+    "require": {
+        "php": "^8.0",
+        "league/emoji": "1.0.x-dev",
+        "livewire/livewire": "^2.5",
+        "graham-campbell/markdown": "^13.1",
+        "spatie/regex": "^2.0"
+    },
     "require-dev": {
         "nunomaduro/larastan": "^0.7.6",
         "friendsofphp/php-cs-fixer": "^2.0",
@@ -51,11 +58,5 @@
             "type": "vcs",
             "url": "https://github.com/unicorn-fail/configuration.git"
         }
-    ],
-    "require": {
-        "league/emoji": "1.0.x-dev",
-        "livewire/livewire": "^2.5",
-        "graham-campbell/markdown": "^13.1",
-        "spatie/regex": "^2.0"
-    }
+    ]
 }
