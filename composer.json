@@ -7,14 +7,6 @@
         "name": "Brian Faust",
         "email": "hello@basecode.sh"
     }],
-    "require": {
-        "unicorn-fail/emoji": "1.0.x-dev",
-        "graham-campbell/markdown": "^13.1",
-        "spatie/regex": "^2.0",
-        "league/commonmark": "^1.6",
-        "spatie/yaml-front-matter": "^2.0",
-        "arkecosystem/ui": "^3.16"        
-    },
     "autoload": {
         "psr-4": {
             "ARKEcosystem\\CommonMark\\": "src/"
@@ -43,17 +35,27 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.0",
-        "graham-campbell/analyzer": "^3.0",
-        "mockery/mockery": "^1.4",
         "nunomaduro/larastan": "^0.7.6",
-        "nunomaduro/laravel-mojito": "^0.2.8",
+        "friendsofphp/php-cs-fixer": "^2.0",
+        "graham-campbell/analyzer": "^3.0",
         "pestphp/pest": "^1.7",
-        "pestphp/pest-plugin-faker": "^1.0",
-        "pestphp/pest-plugin-laravel": "^1.0",
-        "pestphp/pest-plugin-livewire": "^1.0",
-        "phpunit/phpunit": "^9.5",
         "orchestra/testbench": "^6.18",
         "spatie/pest-plugin-snapshots": "^1.0"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/unicorn-fail/emoji.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/unicorn-fail/configuration.git"
+        }
+    ],
+    "require": {
+        "league/emoji": "1.0.x-dev",
+        "livewire/livewire": "^2.5",
+        "graham-campbell/markdown": "^13.1",
+        "spatie/regex": "^2.0"
     }
 }
