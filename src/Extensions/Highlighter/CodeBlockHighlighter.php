@@ -8,7 +8,7 @@ class CodeBlockHighlighter
 {
     public function highlight(string $codeBlock, ?string $language = null)
     {
-        if (str_contains($codeBlock, "<")) {
+        if (str_contains($codeBlock, '<')) {
             preg_match('#<\s*?code\b[^>]*>(.*?)</code\b[^>]*>#s', $codeBlock, $matches);
 
             $codeBlock = $matches[1];
