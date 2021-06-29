@@ -47,6 +47,8 @@ final class LinkRenderer implements InlineRendererInterface, ConfigurationAwareI
         }
 
         if ($this->isInternalLink($attrs['href'])) {
+            $attrs = array_merge($attrs, config('markdown.link_attributes', []));
+
             return new HtmlElement('a', $attrs, $htmlRenderer->renderInlines($inline->children()));
         }
 

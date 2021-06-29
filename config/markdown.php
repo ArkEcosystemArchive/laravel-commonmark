@@ -186,6 +186,7 @@ return [
 
     'max_nesting_level' => INF,
 
+    'link_attributes'               => [],
     'link_renderer_view'            => 'ark::external-link',
     'link_renderer_view_attributes' => [
         'inline' => true,
