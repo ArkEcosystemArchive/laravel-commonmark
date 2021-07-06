@@ -79,7 +79,11 @@ final class LinkRenderer implements InlineRendererInterface, ConfigurationAwareI
 
     private function isInternalLink(string $url): bool
     {
-        if (str_starts_with($url, config('app.url'))) {
+        $_url         = preg_match('/^https?:\/{1,2}/', $url) ? $url : 'https://'.$url;
+        $parsedUrl    = parse_url($_url, PHP_URL_HOST);
+        $parsedAppUrl = parse_url(config('app.url'), PHP_URL_HOST);
+
+        if (! is_null($parsedUrl) && ! is_null($parsedAppUrl) && str_contains($parsedUrl, $parsedAppUrl)) {
             return true;
         }
 

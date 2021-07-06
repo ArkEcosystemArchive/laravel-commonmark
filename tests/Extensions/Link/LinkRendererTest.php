@@ -20,6 +20,7 @@ it('should render internal links', function (string $url) {
     assertMatchesSnapshot((string) $subject->render(new Link($url, 'Label', 'Title'), new HtmlRenderer($environment)));
 })->with([
     'https://ourapp.com',
+    'ourapp.com',
     '#heading',
     '/path/segment',
 ]);
@@ -37,4 +38,6 @@ it('should render external links', function (string $url) {
     'unsupported/relative/url', // is valid, but currently not supported
     'ftp://google.com',
     '//google.com',
+    'foo.com?url=https://ourapp.com',
+    'https://foo.com?url=ourapp.com',
 ]);
