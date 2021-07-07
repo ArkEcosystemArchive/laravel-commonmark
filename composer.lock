@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f063e8b6901b590ad0bb3a00533e7449",
+    "content-hash": "c2907ae7ae5e4fe104d65ce158c79d43",
     "packages": [
         {
             "name": "arkecosystem/ui",
-            "version": "3.0.1",
+            "version": "dev-feat/external-link-dismiss-cookies",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ArkEcosystem/laravel-ui.git",
-                "reference": "7bebb8b2ad3b58dae8b3a4f513f024ccd2a3f215"
+                "reference": "ecbfa86b55901faad579521d965da70941a1c032"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ArkEcosystem/laravel-ui/zipball/7bebb8b2ad3b58dae8b3a4f513f024ccd2a3f215",
-                "reference": "7bebb8b2ad3b58dae8b3a4f513f024ccd2a3f215",
+                "url": "https://api.github.com/repos/ArkEcosystem/laravel-ui/zipball/ecbfa86b55901faad579521d965da70941a1c032",
+                "reference": "ecbfa86b55901faad579521d965da70941a1c032",
                 "shasum": ""
             },
             "require": {
@@ -78,9 +78,9 @@
             "description": "User-Interface Scaffolding for Laravel. Powered by TailwindCSS.",
             "support": {
                 "issues": "https://github.com/ArkEcosystem/laravel-ui/issues",
-                "source": "https://github.com/ArkEcosystem/laravel-ui/tree/3.0.1"
+                "source": "https://github.com/ArkEcosystem/laravel-ui/tree/feat/external-link-dismiss-cookies"
             },
-            "time": "2021-04-14T13:17:50+00:00"
+            "time": "2021-07-06T08:47:25+00:00"
         },
         {
             "name": "bacon/bacon-qr-code",
@@ -10905,10 +10905,18 @@
             "time": "2020-08-10T18:59:43+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "arkecosystem/ui",
+            "version": "dev-feat/external-link-dismiss-cookies",
+            "alias": "3.9.9",
+            "alias_normalized": "3.9.9.0"
+        }
+    ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "unicorn-fail/emoji": 20
+        "unicorn-fail/emoji": 20,
+        "arkecosystem/ui": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

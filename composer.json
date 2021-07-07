@@ -15,7 +15,7 @@
         "calebporzio/sushi": "^2.1",
         "spatie/yaml-front-matter": "^2.0",
         "unicorn-fail/emoji": "1.0.x-dev",
-        "arkecosystem/ui": "^3.0"
+        "arkecosystem/ui": "dev-feat/external-link-dismiss-cookies as 3.9.9"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.18",
