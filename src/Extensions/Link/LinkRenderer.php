@@ -3,7 +3,6 @@
 namespace ARKEcosystem\CommonMark\Extensions\Link;
 
 use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
 use Illuminate\View\ComponentAttributeBag;
 use League\CommonMark\ElementRendererInterface;
 use League\CommonMark\HtmlElement;
