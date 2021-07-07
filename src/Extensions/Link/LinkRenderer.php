@@ -3,6 +3,7 @@
 namespace ARKEcosystem\CommonMark\Extensions\Link;
 
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Illuminate\View\ComponentAttributeBag;
 use League\CommonMark\ElementRendererInterface;
 use League\CommonMark\HtmlElement;
@@ -79,7 +80,7 @@ final class LinkRenderer implements InlineRendererInterface, ConfigurationAwareI
 
     private function isInternalLink(string $url): bool
     {
-        $_url         = preg_match('/^https?:\/{1,2}/', $url) ? $url : 'https://'.$url;
+        $_url         = str_starts_with($url, 'http') ? $url : 'https://'.$url;
         $parsedUrl    = parse_url($_url, PHP_URL_HOST);
         $parsedAppUrl = parse_url(config('app.url'), PHP_URL_HOST);
 
