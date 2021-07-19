@@ -2,6 +2,7 @@
 
 namespace ARKEcosystem\CommonMark\Extensions\Link;
 
+use Illuminate\Support\Arr;
 use Illuminate\View\ComponentAttributeBag;
 use League\CommonMark\ElementRendererInterface;
 use League\CommonMark\HtmlElement;
@@ -47,6 +48,8 @@ final class LinkRenderer implements InlineRendererInterface, ConfigurationAwareI
         }
 
         if ($this->isInternalLink($attrs['href'])) {
+            $attrs = array_merge(Arr::only($attrs, ['href', 'id', 'class', 'name', 'title']), config('markdown.link_attributes', []));
+
             return new HtmlElement('a', $attrs, $htmlRenderer->renderInlines($inline->children()));
         }
 
