@@ -10,12 +10,12 @@
     "require": {
         "php": "^8.0",
         "unicorn-fail/emoji": "1.0.x-dev",
-        "livewire/livewire": "^2.5",
         "graham-campbell/markdown": "^13.1",
-        "spatie/regex": "^2.0"
+        "spatie/regex": "^2.0",
+        "livewire/livewire": "^2.5"
     },
     "require-dev": {
-        "arkecosystem/stan": "^3.0"
+        "arkecosystem/stan": "^3.2"
     },
     "autoload": {
         "psr-4": {
