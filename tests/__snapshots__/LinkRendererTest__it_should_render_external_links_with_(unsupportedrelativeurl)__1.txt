@@ -1,8 +1,1 @@
-<a
-    href="unsupported/relative/url"
-    class="link font-semibold inline space-x-1 whitespace-nowrap"
-    target="_blank"
-    rel="noopener nofollow noreferrer"
->
-    <span>Label</span>
-</a>
+<a href="unsupported/relative/url" title="Title" target="_blank" data-external="true">Label</a>
