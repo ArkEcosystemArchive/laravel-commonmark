@@ -47,12 +47,12 @@ final class LinkRenderer implements InlineRendererInterface, ConfigurationAwareI
         }
 
         $attrs = array_merge(Arr::only($attrs, ['href', 'id', 'class', 'name', 'title']), config('markdown.link_attributes', []));
-        
+
         if (! $this->isInternalLink($attrs['href'])) {
-            $attrs['target'] = '_blank';
+            $attrs['target']        = '_blank';
             $attrs['data-external'] = 'true';
         }
-        
+
         return new HtmlElement('a', $attrs, $htmlRenderer->renderInlines($inline->children()));
     }
 
