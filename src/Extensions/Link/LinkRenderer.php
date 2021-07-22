@@ -65,7 +65,7 @@ final class LinkRenderer implements InlineRendererInterface, ConfigurationAwareI
                 ]
             ));
 
-            $content .= ' ' . $externalLinkIcon->render();
+            $content .= ' '.$externalLinkIcon->render();
         }
 
         return new HtmlElement('a', $attrs, $content);
