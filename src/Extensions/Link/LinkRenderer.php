@@ -47,29 +47,14 @@ final class LinkRenderer implements InlineRendererInterface, ConfigurationAwareI
             $attrs['rel'] = 'noopener nofollow noreferrer';
         }
 
-        if ($this->isInternalLink($attrs['href'])) {
-            $attrs = array_merge(Arr::only($attrs, ['href', 'id', 'class', 'name', 'title']), config('markdown.link_attributes', []));
-
-            return new HtmlElement('a', $attrs, $htmlRenderer->renderInlines($inline->children()));
+        $attrs = array_merge(Arr::only($attrs, ['href', 'id', 'class', 'name', 'title']), config('markdown.link_attributes', []));
+        
+        if (! $this->isInternalLink($attrs['href'])) {
+            $attrs['target'] = '_blank';
+            $attrs['data-external'] = 'true';
         }
-
-        $text = $attrs['title'] ?? $attrs['href'];
-
-        // If the child is not as URL we can use it as the text for the link
-        $children = trim($htmlRenderer->renderInlines($inline->children()));
-
-        if (! filter_var($children, FILTER_VALIDATE_URL)) {
-            $text = $children;
-        }
-
-        return view(config('markdown.link_renderer_view', 'ark::external-link'), array_merge(
-            config('markdown.link_renderer_view_attributes', ['inline' => true]),
-            [
-                'attributes' => new ComponentAttributeBag([]),
-                'text'       => $text,
-                'url'        => $attrs['href'],
-            ]
-        ))->render();
+        
+        return new HtmlElement('a', $attrs, $htmlRenderer->renderInlines($inline->children()));
     }
 
     public function setConfiguration(ConfigurationInterface $configuration)
