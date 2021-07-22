@@ -5,7 +5,6 @@ use League\CommonMark\Environment;
 use League\CommonMark\HtmlRenderer;
 use League\CommonMark\Inline\Element\Link;
 use League\CommonMark\Inline\Element\Text;
-
 use League\CommonMark\Inline\Renderer\TextRenderer;
 use League\CommonMark\Util\Configuration;
 use function Spatie\Snapshots\assertMatchesSnapshot;

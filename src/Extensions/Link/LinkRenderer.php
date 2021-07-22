@@ -3,6 +3,7 @@
 namespace ARKEcosystem\CommonMark\Extensions\Link;
 
 use Illuminate\Support\Arr;
+use Illuminate\View\ComponentAttributeBag;
 use League\CommonMark\ElementRendererInterface;
 use League\CommonMark\HtmlElement;
 use League\CommonMark\Inline\Element\AbstractInline;
@@ -48,12 +49,26 @@ final class LinkRenderer implements InlineRendererInterface, ConfigurationAwareI
 
         $attrs = array_merge(Arr::only($attrs, ['href', 'id', 'class', 'name', 'title']), config('markdown.link_attributes', []));
 
+        $content = $htmlRenderer->renderInlines($inline->children());
+
         if (! $this->isInternalLink($attrs['href'])) {
             $attrs['target']        = '_blank';
             $attrs['data-external'] = 'true';
+
+            $externalLinkIcon = view('ark::icon', array_merge(
+                config('markdown.link_renderer_view_attributes', []),
+                [
+                    'attributes' => new ComponentAttributeBag([]),
+                    'name'       => 'link',
+                    'class'      => 'inline ml-1 -mt-1.5',
+                    'size'       => 'sm',
+                ]
+            ));
+
+            $content .= ' ' . $externalLinkIcon->render();
         }
 
-        return new HtmlElement('a', $attrs, $htmlRenderer->renderInlines($inline->children()));
+        return new HtmlElement('a', $attrs, $content);
     }
 
     public function setConfiguration(ConfigurationInterface $configuration)
