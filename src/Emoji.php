@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ARKEcosystem\CommonMark;
 
 use UnicornFail\Emoji\Converter;
@@ -10,6 +12,7 @@ final class Emoji
 {
     public static function convert(string $contents): string
     {
+        /** @phpstan-ignore-next-line */
         $converter = new Converter([
             'convertEmoticons'  => false,
             'exclude'           => [

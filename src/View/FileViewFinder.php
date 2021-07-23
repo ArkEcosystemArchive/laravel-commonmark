@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ARKEcosystem\CommonMark\View;
 
 use Illuminate\View\FileViewFinder as Finder;
 use Spatie\Regex\Regex;
 
-class FileViewFinder extends Finder
+final class FileViewFinder extends Finder
 {
     /**
      * Get an array of possible view files.
@@ -16,7 +18,7 @@ class FileViewFinder extends Finder
      */
     protected function getPossibleViewFiles($name)
     {
-        return array_map(function ($extension) use ($name) {
+        return array_map(function ($extension) use ($name) : string {
             $regex = Regex::match('/\d.\d/', $name);
 
             if ($regex->hasMatch()) {

@@ -1,12 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ARKEcosystem\CommonMark\Extensions\Highlighter;
 
 use DomainException;
 
-class CodeBlockHighlighter
+final class CodeBlockHighlighter
 {
-    public function highlight(string $codeBlock, ?string $language = null)
+    /** @phpstan-ignore-next-line */
+    public function highlight(string $codeBlock, ?string $language = null): string
     {
         if (str_contains($codeBlock, '<')) {
             preg_match('#<\s*?code\b[^>]*>(.*?)</code\b[^>]*>#s', $codeBlock, $matches);

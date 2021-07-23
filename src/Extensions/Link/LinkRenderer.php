@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1); 
+
 namespace ARKEcosystem\CommonMark\Extensions\Link;
 
 use Illuminate\Support\Arr;
@@ -20,13 +22,7 @@ final class LinkRenderer implements InlineRendererInterface, ConfigurationAwareI
      */
     protected $config;
 
-    /**
-     * @param Link                     $inline
-     * @param ElementRendererInterface $htmlRenderer
-     *
-     * @return HtmlElement
-     */
-    public function render(AbstractInline $inline, ElementRendererInterface $htmlRenderer)
+    public function render(AbstractInline $inline, ElementRendererInterface $htmlRenderer): HtmlElement | string
     {
         if (! ($inline instanceof Link)) {
             throw new \InvalidArgumentException('Incompatible inline type: '.\get_class($inline));
@@ -34,15 +30,17 @@ final class LinkRenderer implements InlineRendererInterface, ConfigurationAwareI
 
         $attrs = $inline->getData('attributes', []);
 
-        $forbidUnsafeLinks = ! $this->config->get('allow_unsafe_links');
+        $forbidUnsafeLinks = $this->config->get('allow_unsafe_links', true) !== true;
         if (! ($forbidUnsafeLinks && RegexHelper::isLinkPotentiallyUnsafe($inline->getUrl()))) {
             $attrs['href'] = $inline->getUrl();
         }
 
+        /** @phpstan-ignore-next-line */
         if (isset($inline->data['title'])) {
             $attrs['title'] = $inline->data['title'];
         }
 
+        /** @phpstan-ignore-next-line */
         if (isset($attrs['target']) && $attrs['target'] === '_blank' && ! isset($attrs['rel'])) {
             $attrs['rel'] = 'noopener nofollow noreferrer';
         }
@@ -58,7 +56,7 @@ final class LinkRenderer implements InlineRendererInterface, ConfigurationAwareI
         // If the child is not as URL we can use it as the text for the link
         $children = trim($htmlRenderer->renderInlines($inline->children()));
 
-        if (! filter_var($children, FILTER_VALIDATE_URL)) {
+        if (filter_var($children, FILTER_VALIDATE_URL) === false) {
             $text = $children;
         }
 
@@ -69,7 +67,7 @@ final class LinkRenderer implements InlineRendererInterface, ConfigurationAwareI
                 'text'       => $text,
                 'url'        => $attrs['href'],
             ]
-        ))->render();
+        ))->__toString();
     }
 
     public function setConfiguration(ConfigurationInterface $configuration)

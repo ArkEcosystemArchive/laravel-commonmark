@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1); 
+
 namespace ARKEcosystem\CommonMark\View;
 
 use GrahamCampbell\Markdown\View\Engine\PathEvaluationTrait;
@@ -27,6 +29,7 @@ final class BladeMarkdownEngine extends CompilerEngine
      *
      * @return void
      */
+    /** @phpstan-ignore-next-line */
     public function __construct(CompilerInterface $compiler, MarkdownConverterInterface $markdown)
     {
         $this->compiler = $compiler;

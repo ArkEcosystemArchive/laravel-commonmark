@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1); 
+
 namespace ARKEcosystem\CommonMark\Extensions\Image;
 
 use Illuminate\Support\Facades\Cache;
@@ -7,7 +9,7 @@ use Illuminate\Support\Facades\Http;
 
 final class TwitterRenderer
 {
-    public static function render(MediaUrl $url)
+    public static function render(MediaUrl $url): string
     {
         $url = 'https://twitter.com/'.$url->getId();
 

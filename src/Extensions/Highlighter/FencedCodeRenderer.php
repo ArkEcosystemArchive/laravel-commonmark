@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ARKEcosystem\CommonMark\Extensions\Highlighter;
 
 use League\CommonMark\Block\Element\AbstractBlock;
@@ -10,13 +12,13 @@ use League\CommonMark\ElementRendererInterface;
 use League\CommonMark\HtmlElement;
 use League\CommonMark\Util\Xml;
 
-class FencedCodeRenderer implements BlockRendererInterface
+final class FencedCodeRenderer implements BlockRendererInterface
 {
     /** @var \ARKEcosystem\CommonMark\Extensions\Highlighter\CodeBlockHighlighter */
-    protected $highlighter;
+    private $highlighter;
 
     /** @var \League\CommonMark\Block\Renderer\FencedCodeRenderer */
-    protected $baseRenderer;
+    private $baseRenderer;
 
     public function __construct()
     {
@@ -43,7 +45,7 @@ class FencedCodeRenderer implements BlockRendererInterface
         return $container;
     }
 
-    protected function configureLineNumbers(HtmlElement $element): void
+    private function configureLineNumbers(HtmlElement $element): void
     {
         $codeBlockWithoutTags = strip_tags($element->getContents());
         $contents             = trim(htmlspecialchars_decode($codeBlockWithoutTags));
@@ -55,10 +57,11 @@ class FencedCodeRenderer implements BlockRendererInterface
         }
     }
 
-    protected function getSpecifiedLanguage(FencedCode $block): ?string
+    private function getSpecifiedLanguage(FencedCode $block): ?string
     {
         $infoWords = $block->getInfoWords();
 
+        /** @phpstan-ignore-next-line */
         if (empty($infoWords) || empty($infoWords[0])) {
             return null;
         }
