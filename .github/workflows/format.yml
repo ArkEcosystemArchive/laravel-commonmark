@@ -23,7 +23,7 @@ jobs:
           coverage: pcov
 
       - name: Install
-        run: composer install --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist --optimize-autoloader
+        run: composer install --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist --optimize-autoloader --ignore-platform-reqs
 
       - name: Run php-cs-fixer
         run: composer format
