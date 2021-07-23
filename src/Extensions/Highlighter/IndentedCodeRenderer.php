@@ -26,7 +26,7 @@ final class IndentedCodeRenderer implements BlockRendererInterface
     public function render(AbstractBlock $block, ElementRendererInterface $htmlRenderer, $inTightList = false)
     {
         $element = $this->baseRenderer->render($block, $htmlRenderer, $inTightList);
-        
+
         $element->setContents(
             $this->highlighter->highlight($element->getContents())
         );

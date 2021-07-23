@@ -11,7 +11,7 @@ final class ContainerRenderer
     /** @phpstan-ignore-next-line */
     public static function render($content, $title): HtmlElement
     {
-        /** @phpstan-ignore-next-line */
+        /* @phpstan-ignore-next-line */
         if (empty($title)) {
             return $content;
         }

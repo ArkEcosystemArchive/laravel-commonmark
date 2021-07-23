@@ -39,7 +39,7 @@ final class ImageRenderer implements InlineRendererInterface, ConfigurationAware
         $alt          = \preg_replace('/\<[^>]*alt="([^"]*)"[^>]*\>/', '$1', $alt);
         $attrs['alt'] = \preg_replace('/\<[^>]*\>/', '', $alt);
 
-        /** @phpstan-ignore-next-line */
+        /* @phpstan-ignore-next-line */
         if (isset($inline->data['title'])) {
             $attrs['title'] = $inline->data['title'];
         }
@@ -54,7 +54,7 @@ final class ImageRenderer implements InlineRendererInterface, ConfigurationAware
             } elseif ($url->isYouTube()) {
                 $content = YouTubeRenderer::render($url);
             } else {
-                $content = new HtmlElement('img', $attrs, '', true);    
+                $content = new HtmlElement('img', $attrs, '', true);
             }
         } else {
             $content = new HtmlElement('img', $attrs, '', true);

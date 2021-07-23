@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1); 
+declare(strict_types=1);
 
 namespace ARKEcosystem\CommonMark\Extensions\Link;
 
@@ -35,12 +35,12 @@ final class LinkRenderer implements InlineRendererInterface, ConfigurationAwareI
             $attrs['href'] = $inline->getUrl();
         }
 
-        /** @phpstan-ignore-next-line */
+        /* @phpstan-ignore-next-line */
         if (isset($inline->data['title'])) {
             $attrs['title'] = $inline->data['title'];
         }
 
-        /** @phpstan-ignore-next-line */
+        /* @phpstan-ignore-next-line */
         if (isset($attrs['target']) && $attrs['target'] === '_blank' && ! isset($attrs['rel'])) {
             $attrs['rel'] = 'noopener nofollow noreferrer';
         }

@@ -61,7 +61,7 @@ final class FencedCodeRenderer implements BlockRendererInterface
     {
         $infoWords = $block->getInfoWords();
 
-        /** @phpstan-ignore-next-line */
+        /* @phpstan-ignore-next-line */
         if (empty($infoWords) || empty($infoWords[0])) {
             return null;
         }
