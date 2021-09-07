@@ -36,7 +36,7 @@ final class TwitterRenderer
         // cached forever. We'll cache the result for 5 minutes.
         if ($result === false) {
             Cache::forget(md5($url));
-            return Cache::remember(md5($url), now()->addSeconds(15), fn () => '');
+            return Cache::remember(md5($url), now()->addMinutes(5), fn () => '');
         }
 
         return $result;
