@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ARKEcosystem\CommonMark;
 
 use ARKEcosystem\CommonMark\Extensions\Highlighter\FencedCodeRenderer;
@@ -8,6 +10,8 @@ use ARKEcosystem\CommonMark\Extensions\Link\LinkRenderer;
 use ARKEcosystem\CommonMark\View\BladeEngine;
 use ARKEcosystem\CommonMark\View\BladeMarkdownEngine;
 use ARKEcosystem\CommonMark\View\FileViewFinder;
+use GrahamCampbell\Markdown\MarkdownServiceProvider;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use League\CommonMark\Block\Element as BlockElement;
 use League\CommonMark\Block\Element\FencedCode;
@@ -18,7 +22,7 @@ use League\CommonMark\Inline\Parser as InlineParser;
 use League\CommonMark\Inline\Renderer as InlineRenderer;
 use League\CommonMark\Normalizer\SlugNormalizer;
 
-class CommonMarkServiceProvider extends ServiceProvider
+final class CommonMarkServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -27,6 +31,8 @@ class CommonMarkServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        $this->app->register(MarkdownServiceProvider::class);
+
         $this->registerViewFinder();
     }
 
@@ -63,11 +69,11 @@ class CommonMarkServiceProvider extends ServiceProvider
      */
     private function registerBladeEngines(): void
     {
-        $this->app->view->getEngineResolver()->register('blade', function () {
+        $this->app->view->getEngineResolver()->register('blade', function (): BladeEngine {
             return new BladeEngine($this->app['blade.compiler'], $this->app['files']);
         });
 
-        $this->app->view->getEngineResolver()->register('blademd', function () {
+        $this->app->view->getEngineResolver()->register('blademd', function (): BladeMarkdownEngine {
             return new BladeMarkdownEngine($this->app['blade.compiler'], $this->app['markdown']);
         });
     }
@@ -79,7 +85,7 @@ class CommonMarkServiceProvider extends ServiceProvider
      */
     private function registerViewFinder(): void
     {
-        $this->app->bind('view.finder', function ($app) {
+        $this->app->bind('view.finder', function ($app): FileViewFinder {
             return new FileViewFinder($app['files'], $app['config']['view.paths']);
         });
     }
@@ -141,7 +147,7 @@ class CommonMarkServiceProvider extends ServiceProvider
             InlineElement\Newline::class    => InlineRenderer\NewlineRenderer::class,
             InlineElement\Strong::class     => InlineRenderer\StrongRenderer::class,
             InlineElement\Text::class       => InlineRenderer\TextRenderer::class,
-        ], $this->app['config']['markdown']['inlineRenderers']);
+        ], Config::get('markdown.inlineRenderers', []));
 
         foreach ($inlineRenderers as $interface => $implementation) {
             $environment->addInlineRenderer($interface, resolve($implementation), 0);

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ARKEcosystem\CommonMark\Extensions\Image;
 
 use League\CommonMark\ElementRendererInterface;
@@ -18,13 +20,7 @@ final class ImageRenderer implements InlineRendererInterface, ConfigurationAware
      */
     protected $config;
 
-    /**
-     * @param Image                    $inline
-     * @param ElementRendererInterface $htmlRenderer
-     *
-     * @return HtmlElement
-     */
-    public function render(AbstractInline $inline, ElementRendererInterface $htmlRenderer)
+    public function render(AbstractInline $inline, ElementRendererInterface $htmlRenderer): HtmlElement
     {
         if (! ($inline instanceof Image)) {
             throw new \InvalidArgumentException('Incompatible inline type: '.\get_class($inline));
@@ -32,7 +28,7 @@ final class ImageRenderer implements InlineRendererInterface, ConfigurationAware
 
         $attrs = $inline->getData('attributes', []);
 
-        $forbidUnsafeLinks = ! $this->config->get('allow_unsafe_links');
+        $forbidUnsafeLinks = $this->config->get('allow_unsafe_links', true) !== true;
         if ($forbidUnsafeLinks && RegexHelper::isLinkPotentiallyUnsafe($inline->getUrl())) {
             $attrs['src'] = '';
         } else {
@@ -43,18 +39,23 @@ final class ImageRenderer implements InlineRendererInterface, ConfigurationAware
         $alt          = \preg_replace('/\<[^>]*alt="([^"]*)"[^>]*\>/', '$1', $alt);
         $attrs['alt'] = \preg_replace('/\<[^>]*\>/', '', $alt);
 
+        /* @phpstan-ignore-next-line */
         if (isset($inline->data['title'])) {
             $attrs['title'] = $inline->data['title'];
         }
 
         $url = MediaUrlParser::parse($inline->getUrl());
 
-        if ($url->isSimpleCast()) {
-            $content = SimpleCastRenderer::render($url);
-        } elseif ($url->isTwitter()) {
-            $content = TwitterRenderer::render($url);
-        } elseif ($url->isYouTube()) {
-            $content = YouTubeRenderer::render($url);
+        if ($url !== null) {
+            if ($url->isSimpleCast()) {
+                $content = SimpleCastRenderer::render($url);
+            } elseif ($url->isTwitter()) {
+                $content = TwitterRenderer::render($url);
+            } elseif ($url->isYouTube()) {
+                $content = YouTubeRenderer::render($url);
+            } else {
+                $content = new HtmlElement('img', $attrs, '', true);
+            }
         } else {
             $content = new HtmlElement('img', $attrs, '', true);
         }

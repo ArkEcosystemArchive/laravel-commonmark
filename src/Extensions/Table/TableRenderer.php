@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ARKEcosystem\CommonMark\Extensions\Table;
 
 use ARKEcosystem\CommonMark\Emoji;
