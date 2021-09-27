@@ -10,12 +10,12 @@
     "require": {
         "illuminate/support": "^8.28",
         "graham-campbell/markdown": "^13.1",
-        "spatie/regex": "^1.4",
+        "spatie/regex": "^2.0",
         "league/commonmark": "^1.5",
         "calebporzio/sushi": "^2.1",
         "spatie/yaml-front-matter": "^2.0",
         "unicorn-fail/emoji": "1.0.x-dev",
-        "arkecosystem/ui": "^3.0"
+        "arkecosystem/ui": "^4.0"
     },
     "require-dev": {
         "arkecosystem/stan": "^3.3",

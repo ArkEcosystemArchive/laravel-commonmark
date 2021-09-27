@@ -4,50 +4,54 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "da0c52faec8610b66bd0d5589d4ba2f5",
+    "content-hash": "1622d72f6fe724504c2895e2ab3c7183",
     "packages": [
         {
             "name": "arkecosystem/ui",
-            "version": "3.0.1",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ArkEcosystem/laravel-ui.git",
-                "reference": "7bebb8b2ad3b58dae8b3a4f513f024ccd2a3f215"
+                "reference": "d964678db43837d1b6dfc086eda62464e91b4b75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ArkEcosystem/laravel-ui/zipball/7bebb8b2ad3b58dae8b3a4f513f024ccd2a3f215",
-                "reference": "7bebb8b2ad3b58dae8b3a4f513f024ccd2a3f215",
+                "url": "https://api.github.com/repos/ArkEcosystem/laravel-ui/zipball/d964678db43837d1b6dfc086eda62464e91b4b75",
+                "reference": "d964678db43837d1b6dfc086eda62464e91b4b75",
                 "shasum": ""
             },
             "require": {
                 "google/recaptcha": "^1.2",
-                "illuminate/bus": "^7.0|^8.0",
-                "illuminate/http": "^7.0|^8.0",
-                "illuminate/mail": "^7.0|^8.0",
-                "illuminate/support": "^7.0|^8.0",
+                "illuminate/bus": "^8.0",
+                "illuminate/contracts": "^8.0",
+                "illuminate/http": "^8.0",
+                "illuminate/mail": "^8.0",
+                "illuminate/support": "^8.0",
+                "illuminate/view": "^8.0",
+                "konceiver/better-number-formatter": "^2.2",
                 "livewire/livewire": "^2.0",
-                "php": "^7.4|^8.0",
+                "php": "^8.0",
                 "pragmarx/google2fa-laravel": "^1.3",
                 "ruafozy/mersenne-twister": "^1.3",
                 "spatie/laravel-flash": "^1.7",
-                "spatie/laravel-schemaless-attributes": "^1.8"
+                "spatie/laravel-package-tools": "^1.9",
+                "spatie/laravel-schemaless-attributes": "^1.8",
+                "spatie/regex": "^2.0"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.16",
-                "fzaninotto/faker": "^1.9.1",
                 "graham-campbell/analyzer": "^3.0",
                 "mockery/mockery": "^1.3.1",
                 "nunomaduro/larastan": "^0.6.4",
                 "nunomaduro/laravel-mojito": "^0.2.6",
-                "pestphp/pest": "^0.3.0",
-                "pestphp/pest-plugin-faker": "^0.3.0",
-                "pestphp/pest-plugin-laravel": "^0.3.0",
-                "pestphp/pest-plugin-livewire": "^0.3.0",
-                "phpunit/phpunit": "^9.3",
-                "psalm/plugin-laravel": "^1.4",
-                "rector/rector": "^0.8.14",
-                "vimeo/psalm": "^3.16"
+                "orchestra/testbench": "^6.21",
+                "pestphp/pest": "^1.0",
+                "pestphp/pest-plugin-faker": "^1.0",
+                "pestphp/pest-plugin-laravel": "^1.0",
+                "pestphp/pest-plugin-livewire": "^1.0",
+                "pestphp/pest-plugin-parallel": "^0.3.1",
+                "phpunit/phpunit": "^9.5",
+                "spatie/pest-plugin-snapshots": "^1.1"
             },
             "type": "library",
             "extra": {
@@ -78,9 +82,9 @@
             "description": "User-Interface Scaffolding for Laravel. Powered by TailwindCSS.",
             "support": {
                 "issues": "https://github.com/ArkEcosystem/laravel-ui/issues",
-                "source": "https://github.com/ArkEcosystem/laravel-ui/tree/3.0.1"
+                "source": "https://github.com/ArkEcosystem/laravel-ui/tree/4.0.1"
             },
-            "time": "2021-04-14T13:17:50+00:00"
+            "time": "2021-09-27T10:13:05+00:00"
         },
         {
             "name": "bacon/bacon-qr-code",
@@ -857,6 +861,67 @@
                 }
             ],
             "time": "2020-04-13T13:17:36+00:00"
+        },
+        {
+            "name": "konceiver/better-number-formatter",
+            "version": "2.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/konceiver/better-number-formatter.git",
+                "reference": "016b2dc9e8e8fc754efe2e4ebf00689bdfb84efb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/konceiver/better-number-formatter/zipball/016b2dc9e8e8fc754efe2e4ebf00689bdfb84efb",
+                "reference": "016b2dc9e8e8fc754efe2e4ebf00689bdfb84efb",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^8.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "konceiver/stan": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Konceiver\\BetterNumberFormatter\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Brian Faust",
+                    "email": "brian@konceiver.dev",
+                    "homepage": "https://konceiver.dev",
+                    "role": "Developer"
+                }
+            ],
+            "description": ":package_description",
+            "homepage": "https://github.com/konceiver/better-number-formatter",
+            "keywords": [
+                "better-number-formatter",
+                "konceiver"
+            ],
+            "support": {
+                "issues": "https://github.com/konceiver/better-number-formatter/issues",
+                "source": "https://github.com/konceiver/better-number-formatter/tree/2.2.1"
+            },
+            "funding": [
+                {
+                    "url": "https://konceiver.dev/open-source/support-us",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/faustbrian",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-06-18T12:09:38+00:00"
         },
         {
             "name": "laravel/framework",
@@ -2401,6 +2466,66 @@
             "time": "2020-11-27T07:26:26+00:00"
         },
         {
+            "name": "spatie/laravel-package-tools",
+            "version": "1.9.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-package-tools.git",
+                "reference": "f710fe196c126fb9e0aee67eb5af49ad8f13f528"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/f710fe196c126fb9e0aee67eb5af49ad8f13f528",
+                "reference": "f710fe196c126fb9e0aee67eb5af49ad8f13f528",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^7.0|^8.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.4",
+                "orchestra/testbench": "^5.0|^6.0",
+                "phpunit/phpunit": "^9.3",
+                "spatie/test-time": "^1.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\LaravelPackageTools\\": "src",
+                    "Spatie\\LaravelPackageTools\\Database\\Factories\\": "database/factories"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Tools for creating Laravel packages",
+            "homepage": "https://github.com/spatie/laravel-package-tools",
+            "keywords": [
+                "laravel-package-tools",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-package-tools/issues",
+                "source": "https://github.com/spatie/laravel-package-tools/tree/1.9.2"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-09-21T13:06:51+00:00"
+        },
+        {
             "name": "spatie/laravel-schemaless-attributes",
             "version": "1.8.3",
             "source": {
@@ -2468,20 +2593,20 @@
         },
         {
             "name": "spatie/regex",
-            "version": "1.4.2",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/regex.git",
-                "reference": "1500ed75af430df3a32047494c43d79d45cf152b"
+                "reference": "6671b64ff0aaae5fbe98bb292eec93a8cd6281d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/regex/zipball/1500ed75af430df3a32047494c43d79d45cf152b",
-                "reference": "1500ed75af430df3a32047494c43d79d45cf152b",
+                "url": "https://api.github.com/repos/spatie/regex/zipball/6671b64ff0aaae5fbe98bb292eec93a8cd6281d3",
+                "reference": "6671b64ff0aaae5fbe98bb292eec93a8cd6281d3",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3|^8.0"
+                "php": "^8.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^9.3"
@@ -2515,7 +2640,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/regex/issues",
-                "source": "https://github.com/spatie/regex/tree/1.4.2"
+                "source": "https://github.com/spatie/regex/tree/2.0.1"
             },
             "funding": [
                 {
@@ -2527,7 +2652,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-11-03T23:05:25+00:00"
+            "time": "2021-04-20T08:33:46+00:00"
         },
         {
             "name": "spatie/yaml-front-matter",
@@ -8961,6 +9086,58 @@
             "time": "2021-02-03T23:26:27+00:00"
         },
         {
+            "name": "psr/http-client",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-client.git",
+                "reference": "2dfb5f6c5eff0e91e20e913f8c5452ed95b86621"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-client/zipball/2dfb5f6c5eff0e91e20e913f8c5452ed95b86621",
+                "reference": "2dfb5f6c5eff0e91e20e913f8c5452ed95b86621",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0 || ^8.0",
+                "psr/http-message": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Client\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for HTTP clients",
+            "homepage": "https://github.com/php-fig/http-client",
+            "keywords": [
+                "http",
+                "http-client",
+                "psr",
+                "psr-18"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/http-client/tree/master"
+            },
+            "time": "2020-06-29T06:28:15+00:00"
+        },
+        {
             "name": "psr/http-factory",
             "version": "1.0.1",
             "source": {
@@ -9014,58 +9191,6 @@
                 "source": "https://github.com/php-fig/http-factory/tree/master"
             },
             "time": "2019-04-30T12:38:16+00:00"
-        },
-        {
-            "name": "psr/http-client",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/http-client.git",
-                "reference": "2dfb5f6c5eff0e91e20e913f8c5452ed95b86621"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-client/zipball/2dfb5f6c5eff0e91e20e913f8c5452ed95b86621",
-                "reference": "2dfb5f6c5eff0e91e20e913f8c5452ed95b86621",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.0 || ^8.0",
-                "psr/http-message": "^1.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Http\\Client\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interface for HTTP clients",
-            "homepage": "https://github.com/php-fig/http-client",
-            "keywords": [
-                "http",
-                "http-client",
-                "psr",
-                "psr-18"
-            ],
-            "support": {
-                "source": "https://github.com/php-fig/http-client/tree/master"
-            },
-            "time": "2020-06-29T06:28:15+00:00"
         },
         {
             "name": "psr/http-message",
@@ -11553,5 +11678,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.0.0"
 }
