@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace ARKEcosystem\CommonMark;
 
-use League\Emoji\EmojiConverter;
 use League\Emoji\Emojibase\EmojibaseDatasetInterface;
 use League\Emoji\Emojibase\EmojibaseShortcodeInterface;
+use League\Emoji\EmojiConverter;
 
 final class Emoji
 {
