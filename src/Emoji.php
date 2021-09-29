@@ -12,7 +12,6 @@ final class Emoji
 {
     public static function convert(string $contents): string
     {
-        /** @phpstan-ignore-next-line */
         $converter = EmojiConverter::create([
             'convertEmoticons'  => false,
             'exclude'           => [
