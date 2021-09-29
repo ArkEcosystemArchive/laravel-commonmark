@@ -4,26 +4,26 @@ declare(strict_types=1);
 
 namespace ARKEcosystem\CommonMark;
 
-use UnicornFail\Emoji\Converter;
-use UnicornFail\Emoji\Emojibase\DatasetInterface;
-use UnicornFail\Emoji\Emojibase\ShortcodeInterface;
+use League\Emoji\EmojiConverter;
+use League\Emoji\Emojibase\EmojibaseDatasetInterface;
+use League\Emoji\Emojibase\EmojibaseShortcodeInterface;
 
 final class Emoji
 {
     public static function convert(string $contents): string
     {
         /** @phpstan-ignore-next-line */
-        $converter = new Converter([
+        $converter = EmojiConverter::create([
             'convertEmoticons'  => false,
             'exclude'           => [
                 'shortcodes' => [],
             ],
             'locale'            => 'en',
             'native'            => false,
-            'presentation'      => DatasetInterface::EMOJI,
-            'preset'            => ShortcodeInterface::DEFAULT_PRESETS,
+            'presentation'      => EmojibaseDatasetInterface::EMOJI,
+            'preset'            => EmojibaseShortcodeInterface::DEFAULT_PRESETS,
         ]);
 
-        return $converter->convertToUnicode($contents);
+        return $converter->convert($contents);
     }
 }
