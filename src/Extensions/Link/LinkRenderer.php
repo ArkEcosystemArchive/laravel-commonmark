@@ -63,7 +63,6 @@ final class LinkRenderer implements InlineRendererInterface, ConfigurationAwareI
                 ]
             ));
 
-            /* @phpstan-ignore-next-line */
             $content = $content.' '.$externalLinkIcon->render();
         }
 

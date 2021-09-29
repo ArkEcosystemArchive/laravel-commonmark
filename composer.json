@@ -3,10 +3,18 @@
     "description": "CommonMark for internal Laravel Projects. Powered by league/commonmark.",
     "type": "library",
     "license": "MIT",
-    "authors": [{
-        "name": "Brian Faust",
-        "email": "hello@basecode.sh"
-    }],
+    "authors": [
+        {
+            "name": "Brian Faust",
+            "email": "hello@basecode.sh"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/unicorn-fail/configuration.git"
+        }
+    ],
     "require": {
         "illuminate/support": "^8.28",
         "graham-campbell/markdown": "^13.1",
@@ -15,7 +23,7 @@
         "calebporzio/sushi": "^2.1",
         "spatie/yaml-front-matter": "^2.0",
         "unicorn-fail/emoji": "1.0.x-dev",
-        "arkecosystem/ui": "^4.0"
+        "arkecosystem/ui": "^5.0"
     },
     "require-dev": {
         "arkecosystem/stan": "^3.3",
@@ -47,5 +55,8 @@
         ]
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true
+    }
 }
